@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About me!</title>
+  <style>
+      
+    body {
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url(https://i.ibb.co/1fVN5KKv/cs-s.jpg);
+      color: #333;
+    }
+
+   header {
+     background: #00357a;
+     text-align: center;
+     padding: 5px 15px;
+     position: relative;
+    }
+
+    header img {
+      max-width: 350px;
+      height: auto;
+    }
+
+    /* Burger button */
+  .burger {
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+  .burger-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+    }
+
+
+    /* Side menu */
+    .side-menu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #00357a;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+    .side-menu a {
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: 0.2s;
+    }
+    .side-menu a:hover { background: rgba(255,255,255,0.2); }
+    .side-menu .closebtn {
+      position: absolute;
+     top: 15px;
+      right: 20px;
+      font-size: 40px;
+     color: white;
+      cursor: pointer;
+    }
+
+
+    /* Homepage card layout */
+    main {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+    .card:hover { transform: scale(1.05); }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    /* Page content */
+    .page {
+      display: none;
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px;
+      text-align: center;
+    }
+
+  
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+      
+    .gallery img {
+     width: 100%;
+     height: 120px;
+     object-fit: cover;
+    border-radius: 8px;
+    }
+
+    #music .gallery img {
+     width: 100%;
+     height: auto;
+     aspect-ratio: 1 / 1;
+     border-radius: 8px;
+    display: block;
+    }
+
+    #games .gallery img {
+     width: 100%;
+     height: auto;
+     aspect-ratio: 1 / 1;
+     object-fit: cover;
+     border-radius: 8px;
+     display: block;
+    }
+
+    #f1 .gallery {
+     grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+     max-width: 700px;
+     margin: 20px auto;
+    }
+
+    #f1 .gallery img {
+     height: 200px;    
+    object-fit: cover; 
+     border-radius: 12px;
+     width: 100%;
+
+    }
+
+    #food .gallery {
+     grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+     max-width: 600px;
+     margin: 20px auto;
+    }
+
+    #food .gallery img {
+     height: 150px;    
+    object-fit: cover; 
+     border-radius: 12px;
+     width: 100%;
+
+    }
+
+    #music .gallery img {
+   width: 100%;
+   aspect-ratio: 1 / 1;
+    object-fit: cover;
+   border-radius: 8px;
+   display: block;
+    }
+
+
+#friends .gallery,
+#office .gallery,
+#brooklyn .gallery,
+#himym .gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+#friends .gallery img,
+#office .gallery img,
+#brooklyn .gallery img,
+#himym .gallery img {
+  width: 100%;
+  height: 130px; 
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+#bttf .gallery,
+#wicked .gallery,
+#tgsm .gallery,
+#bfs .gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 700px; 
+  margin: 20px auto;
+}
+
+#bttf .gallery img,
+#wicked .gallery img,
+#tgsm .gallery img,
+#bfs .gallery img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+#games .gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+#games .gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+#music .gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 10px;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+#music .gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+    /* Sitcom buttons */
+    .sitcom-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .sitcom-btn {
+      position: relative;
+      height: 120px;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      border: none;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      text-shadow: 0 0 8px rgba(0,0,0,0.7);
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #00357a;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+      /* Movies buttons */
+    .movies-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .movies-btn {
+      position: relative;
+      height: 120px;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      border: none;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      text-shadow: 0 0 8px rgba(0,0,0,0.7);
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #00357a;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+  .driver-float-btn {
+     position: absolute;
+      top: 67%;
+      right: 80px;
+     transform: translateY(-50%);
+     width: 230px;
+     height: auto;
+     cursor: pointer;
+     border-radius: 10px;
+     border: 1.5px solid black;
+     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+  .driver-float-btn:hover {
+     transform: translateY(-50%) scale(1.05);
+     box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+    }
+
+    /* Footer */
+    footer {
+  background: #00357a;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <header>
+  <img src="https://i.ibb.co/S4MCTwC3/Untitled-design.png" class="burger" onclick="openMenu()" alt="Menu" />
+  <img src="https://i.ibb.co/zjJdxZQ/cs-s.png" alt="logo" onclick="showPage('about')" style="cursor:pointer;">
+</header>
+
+
+  <!-- Side Menu -->
+<div id="menu" class="side-menu">
+  <span class="closebtn" onclick="closeMenu()">×</span>
+  <a href="#" onclick="showPage('home'); closeMenu()" style="font-weight:bold;">HOME</a>
+  <a href="#" onclick="showPage('sitcoms'); closeMenu()">Sitcoms</a>
+  <a href="#" onclick="showPage('f1'); closeMenu()">Formula 1</a>
+  <a href="#" onclick="showPage('cooking'); closeMenu()">Cooking & Eating</a>
+  <a href="#" onclick="showPage('games'); closeMenu()">Games</a>
+  <a href="#" onclick="showPage('music'); closeMenu()">Music</a>
+  <a href="#" onclick="showPage('movies'); closeMenu()">Movies</a>
+  <a href="#" onclick="showPage('about'); closeMenu()" style="font-weight:bold;">About Me</a>
+</div>
+
+
+  <!-- Homepage -->
+  <main id="home" class="page" style="display:grid;">
+    <div class="card" onclick="showPage('sitcoms')">
+      <img src="https://i.ibb.co/xSXyPWzC/cs-s-3.png" alt="sitcoms">
+    </div>
+    <div class="card" onclick="showPage('f1')">
+      <img src="https://i.ibb.co/4RyWCWNC/cs-s-2.png" alt="f1">
+    </div>
+    <div class="card" onclick="showPage('food')">
+      <img src="https://i.ibb.co/ksrQSrtb/cs-s-4.png" alt="food">
+    </div>
+    <div class="card" onclick="showPage('games')">
+      <img src="https://i.ibb.co/GvwnHJFc/cs-s.png" alt="games">
+    </div>
+    <div class="card" onclick="showPage('movies')">
+      <img src="https://i.ibb.co/9k3R4txy/cs-s.png" alt="movies">
+    </div>
+    <div class="card" onclick="showPage('music')">
+      <img src="https://i.ibb.co/PGx1NGgb/cs-s-10.png" alt="music">
+    </div>
+  </main>
+
+  <!-- Sitcoms Page -->
+  <div id="sitcoms" class="page">
+    <h1>My all time favorite TV shows!</h1>
+    <p>Here are some shows that complete me. Click any to dig deeper!</p>
+    <div class="sitcom-buttons">
+      <button class="sitcom-btn" style="background-image:url('https://i.ibb.co/pBBf3rdv/cs-s-2.png')" onclick="showPage('friends')"></button>
+      <button class="sitcom-btn" style="background-image:url('https://i.ibb.co/4npgsdSc/cs-s-1.png')" onclick="showPage('office')"></button>
+      <button class="sitcom-btn" style="background-image:url('https://i.ibb.co/TM8q0KJb/cs-s-5.png')" onclick="showPage('brooklyn')"></button>
+      <button class="sitcom-btn" style="background-image:url('https://i.ibb.co/3Vxnjcz/cs-s-4.png')" onclick="showPage('himym')"></button>
+    </div>
+    <a href="#" class="back" onclick="showPage('home')">← Back to Home</a>
+  </div>
+
+  <!-- Friends -->
+  <div id="friends" class="page">
+    <h1>FRIENDS</h1>
+    <p>I first watched this during the start of pandemic. Me, my sister, and my mom, would watch 2 episodes every night after dinner.
+       I loved it so much because every episode always had me laughing. It was incredibly sad for me when we reached the last episode. I love the sitcom so much I still rewatch it to this day.</p>
+    <div class="gallery">
+      <img src="https://i.pinimg.com/1200x/c8/27/f2/c827f23915b10687951f722354fc00d2.jpg" alt="fimg1">
+      <img src="https://i.pinimg.com/736x/82/da/4b/82da4b70f781475415f6f083d8459d1b.jpg" alt="fimg2">
+      <img src="https://i.pinimg.com/736x/a7/0f/c2/a70fc203d1bf580c6bbb98c03efa8b7b.jpg" alt="fimg3">
+      <img src="https://i.pinimg.com/1200x/83/7d/5a/837d5a6796a72d9f4e055cdb4197bbd8.jpg" alt="fimg4">
+      <img src="https://i.pinimg.com/1200x/8c/12/78/8c1278e7a926619a5f6c1b78201d574c.jpg" alt="fimg5">
+      <img src="https://i.pinimg.com/1200x/ce/49/03/ce490330c5491caf46929598139644fd.jpg" alt="fimg6">
+    </div>
+    <a href="#" class="back" onclick="showPage('sitcoms')">← Back to Sitcoms</a>
+  </div>
+
+  <!-- The Office -->
+  <div id="office" class="page">
+    <h1>The Office</h1>
+    <p>I started watching The Office at the summer of 2025. This was the first every mockumentary show I have watched and I fell in love with it quickly. 
+      I love all the pranks and humor in each episode and I enjoyed it so much I finished the whole thing in 2 and a half weeks! I remember crying for 2 hours while and after watching the last episode, because of how much
+      the show inspired and imapcted me. I have to admit, it might be my most favorite ending of all time. I miss watching it so much. It reminds me of how happy life was during 8th grade and how I took the best school year of
+      my life for granted. (S.Y 24-25)
+    </p>
+    <div class="gallery">
+      <img src= "https://i.pinimg.com/736x/59/1f/3e/591f3e3ddd802a08cddcf601581a2e4b.jpg" alt="oimg1">
+      <img src= "https://i.pinimg.com/1200x/2b/8e/11/2b8e1128f30b5b90cbab1ae138829d5c.jpg" alt="oimg2">
+      <img src= "https://i.pinimg.com/736x/c2/cf/05/c2cf051546c0d8028d695d6154f58dee.jpg" alt="oimg3">
+      <img src= "https://i.pinimg.com/736x/96/90/f2/9690f281d49bb12a0897596b36f3d008.jpg" alt="oimg4">
+      <img src= "https://i.pinimg.com/736x/2b/5c/6f/2b5c6f4d75a41237a96560fcd3bdcd74.jpg" alt="oimg5">
+      <img src= "https://i.pinimg.com/736x/bd/0c/99/bd0c99b1947ab8db03021a0359e6e297.jpg" alt="oimg6">
+    </div>
+    <a href="#" class="back" onclick="showPage('sitcoms')">← Back to Sitcoms</a>
+  </div>
+
+  <!-- Brooklyn 99 -->
+  <div id="brooklyn" class="page">
+    <h1>Brooklyn 99</h1>
+    <p>I started watching it in 2022 but didn't finish it, so during the last months of 8th grade I decided to continue watching from the start and like everyone else who have watched it, I loved it! I love the humor, 
+      characters, and thrilling detective stories! But what I love the most is the Halloween Heists! Of course, everybody loves Halloween Heists!
+    </p>
+    <div class="gallery">
+      <img src= "https://i.pinimg.com/1200x/a6/aa/79/a6aa79c76ad9674d53fc1b4a949a1471.jpg" alt="bimg1">
+      <img src= "https://i.pinimg.com/1200x/2a/39/7a/2a397ac1e9860495e791c8ddcfdff2cb.jpg" alt="bimg2">
+      <img src= "https://i.pinimg.com/736x/79/1c/ce/791cce8d38d863cafad082be585b40f6.jpg" alt="bimg3">
+      <img src= "https://i.pinimg.com/1200x/5a/a5/8e/5aa58e9454fc431d0fcf13263cd1daa0.jpg" alt="bimg4">
+      <img src= "https://i.pinimg.com/1200x/ae/e8/19/aee819b964dff5bb047719ba3e13c0d3.jpg" alt="bimg5">
+      <img src= "https://i.pinimg.com/1200x/c6/e1/ea/c6e1eadcfcd8b860f54dadd9fc18d2b5.jpg" alt="bimg6">
+    </div>
+    <a href="#" class="back" onclick="showPage('sitcoms')">← Back to Sitcoms</a>
+  </div>
+
+  <!-- HIMYM -->
+  <div id="himym" class="page">
+    <h1>How I Met Your Mother</h1>
+    <p>I watched it right after The Office because of how many clips I see on my Instagram. So I gave it a try and I finished it in 2 weeks! I watched it until 7 in the morning but I don't regret it one bit!
+      I love the whole entire show but the best part is probably the soundtrack! In my opinion it has the best soundtrack in all of TV shows!
+    </p>
+    <div class="gallery">
+      <img src= "https://i.pinimg.com/1200x/a1/8c/4a/a18c4a7bda6884dc39798a11bb6f7c3b.jpg" alt="himg1">
+      <img src= "https://i.pinimg.com/1200x/22/55/02/225502f97055a445d7e659cada24bf2b.jpg" alt="himg2">
+      <img src= "https://i.pinimg.com/1200x/83/63/71/8363714bc29cb90f6be98c592b952de2.jpg" alt="himg3">
+      <img src= "https://i.pinimg.com/1200x/9d/09/71/9d097102375ac896adeae9a30868d0a4.jpg" alt="himg4">
+      <img src= "https://i.pinimg.com/736x/9c/c3/f2/9cc3f2488aca95ad75dd604f792a5770.jpg" alt="himg5">
+      <img src= "https://i.pinimg.com/736x/a7/2b/48/a72b482f7e0a3ff12899bdd4050cf5c3.jpg" alt="himg6">
+    </div>
+    <a href="#" class="back" onclick="showPage('sitcoms')">← Back to Sitcoms</a>
+  </div>
+
+  <!-- F1 Page -->
+  <div id="f1" class="page">
+    <h1>Formula 1!</h1>
+    <p>I started watching F1 at the beginning of 2024 and I still enjoy it until right now. I admire the thrill and joy of each race.</p>
+    <div class="gallery">
+      <img src= "https://i.pinimg.com/1200x/69/ef/10/69ef10391be55dd02e4ec2c446360148.jpg" alt="f1img1">
+      <img src= "https://i.pinimg.com/1200x/27/3c/65/273c65b9d74c290ba59bd120b3f7e9f5.jpg" alt="f1img2">
+      <img src= "https://i.pinimg.com/736x/e4/23/a0/e423a00ccb47969438a6e6cdaf54e7dd.jpg" alt="f1img3">
+      <img src= "https://i.pinimg.com/736x/85/7d/26/857d26d0f1dd253840afbe72c4d26d51.jpg" alt="f1img4">
+      <img src= "https://i.pinimg.com/1200x/48/cc/bc/48ccbce349ac7cbe9b0e3ca3e7ef9404.jpg" alt="f1img5">
+      <img src= "https://i.pinimg.com/736x/9d/af/db/9dafdbf14dba6fca35301c47c5f2686e.jpg" alt="f1img6">
+    </div>
+
+        <img src="https://i.ibb.co/HD4sNY92/free.png" 
+         alt="Driver Button" 
+         class="driver-float-btn"
+         onclick="showPage('driver')">
+
+
+    <a href="#" class="back" onclick="showPage('home')">← Back to Home</a>
+  </div>
+
+  <!-- Food Page -->
+  <div id="food" class="page">
+    <h1>Cooking & Eating!</h1>
+    <p>One thing I love about weekends is making food for me and my sisters and having good laughs while enjoying the food.</p>
+    <div class="gallery">
+      <img src="https://i.pinimg.com/1200x/1f/5f/f6/1f5ff6cdc89bfc87273f7c116edf6673.jpg" alt="food1">
+      <img src="https://i.pinimg.com/1200x/69/01/56/69015690db7c12367c28cde2c2e89f10.jpg" alt="food2">
+      <img src="https://i.pinimg.com/736x/80/db/ad/80dbad3d291af6f65e4aa6957c241665.jpg" alt="food3">
+      <img src="https://i.pinimg.com/736x/19/13/1c/19131c651f485953cc84f12c9bb3b14c.jpg" alt="food4">
+      <img src="https://i.pinimg.com/1200x/a6/35/69/a635695e914675dee7dd0931719cb86b.jpg" alt="food5">
+      <img src="https://i.pinimg.com/1200x/64/4e/9e/644e9e787b5ebfac711d797fbf488595.jpg" alt="food6">
+    </div>
+    <a href="#" class="back" onclick="showPage('home')">← Back to Home</a>
+  </div>
+
+  <!-- Games Page -->
+  <div id="games" class="page">
+    <h1>Games</h1>
+    <p>Here are some games I like to play in my free time.</p>
+    <div class="gallery">
+      <img src="https://i.pinimg.com/736x/89/24/e7/8924e77c693dbf9150e13c448d5b27b8.jpg" alt="games1">
+      <img src="https://i.pinimg.com/1200x/82/23/36/822336fff205caae3c2caca3f18814eb.jpg" alt="games2">
+      <img src="https://i.pinimg.com/736x/c7/fc/bd/c7fcbd4d1186eed15a1cdfc8e9ec6b16.jpg" alt="games3">
+      <img src="https://i.pinimg.com/736x/e3/51/20/e35120df21a705f4de0888689f3b3d03.jpg" alt="games4">
+      <img src="https://i.pinimg.com/736x/5a/3e/9a/5a3e9ac0198ffd1641d4918cab45710b.jpg" alt="games5">
+      <img src="https://i.pinimg.com/1200x/83/2d/16/832d163876414e34016442a4724abc07.jpg" alt="games6">
+    </div>
+    <a href="#" class="back" onclick="showPage('home')">← Back to Home</a>
+  </div>
+
+  <!-- Movies Page -->
+  <div id="movies" class="page">
+    <h1>My Favorite Movies!</h1>
+    <p>I would consider myself a bit of a film freak. Click any to dig deeper!</p>
+    <div class="movies-buttons">
+      <button class="movies-btn" style="background-image:url('https://i.ibb.co/n8ZgZQ3J/cs-s-6.png')" onclick="showPage('bttf')"></button>
+      <button class="movies-btn" style="background-image:url('https://i.ibb.co/JRcQqVCm/cs-s-7.png')" onclick="showPage('wicked')"></button>
+      <button class="movies-btn" style="background-image:url('https://i.ibb.co/nNXS3GtT/cs-s-8.png')" onclick="showPage('tgsm')"></button>
+      <button class="movies-btn" style="background-image:url('https://i.ibb.co/LXC6xX58/cs-s-1.png')" onclick="showPage('bfs')"></button>
+    </div>
+    <a href="#" class="back" onclick="showPage('home')">← Back to Home</a>
+  </div>
+
+    <!-- Back to the Future -->
+  <div id="bttf" class="page">
+    <h1>Back to the Future</h1>
+    <p>My favorite movie of all time. No words can describe how perfect it is. I of course also love part 2 and 3 until death, but if I had to 
+    choose one it would be part 1.</p>
+    <div class="gallery">
+      <img src="https://i.pinimg.com/736x/8c/9c/ef/8c9cef17e690c2498aad60117b80cb77.jpg" alt="bttf1">
+      <img src="https://i.pinimg.com/736x/8d/8f/2f/8d8f2f95d0daefe5bff986c77162ff25.jpg" alt="bttf2">
+      <img src="https://i.ibb.co/bM4XBjWs/dc3e04daa68909626bf53856daabd587.jpg" alt="bttf3">
+      <img src="https://i.pinimg.com/736x/5d/47/d1/5d47d11c68e357d1a2c404408b9fdc68.jpg" alt="bttf4">
+      <img src="https://i.ibb.co/hxpJ1wQN/bbd80882472c39cf4c336a9aea116ba2.jpg" alt="bttf5">
+      <img src="https://i.ibb.co/mCV03vzy/ed293fade0cd18f5f3000fe97352bfa1.jpg" alt="bttf6">
+    </div>
+    <a href="#" class="back" onclick="showPage('movies')">← Back to Movies</a>
+  </div>
+
+  <!-- Wicked -->
+  <div id="wicked" class="page">
+    <h1>Wicked</h1>
+    <p>I watched it for the first time ever in the cinema with my sister and cousin and fell in love with the whole story and lore. I watched it multiple times after with my other sister at home. We constantly rewatch it if we want to. I still listen to the soundtrack when I'm in the mood to sing or whenever I'm with my sisters.</p>
+    <div class="gallery">
+      <img src= "https://i.pinimg.com/1200x/c7/5c/99/c75c998a751db7172bdb67aa58d0ded7.jpg" alt="wicked1">
+      <img src= "https://i.pinimg.com/1200x/d1/ef/2a/d1ef2ad9c02903d71392c98783eaf9bd.jpg" alt="wicked2">
+      <img src= "https://i.pinimg.com/1200x/05/77/0e/05770ee21558bda916cf47ec16c59d87.jpg" alt="wicked3">
+      <img src= "https://i.pinimg.com/1200x/eb/15/03/eb150389bb2ba3c9cbbaba85bd70a5ca.jpg" alt="wicked4">
+      <img src= "https://i.pinimg.com/736x/e9/48/3d/e9483d8bd00aeb5d25ea60c852cded71.jpg" alt="wicked5">
+      <img src= "https://i.pinimg.com/1200x/35/b5/58/35b558f7e019269bd85fe94f11b618bd.jpg" alt="wicked6">
+    </div>
+    <a href="#" class="back" onclick="showPage('movies')">← Back to Movies</a>
+  </div>
+
+  <!-- The Greatest Showman -->
+  <div id="tgsm" class="page">
+    <h1>The Greatest Showman</h1>
+    <p>This was my favorite movie back in Grades 1-3, and it's filled with nostalgia for me.</p>
+    <div class="gallery">
+      <img src= "https://i.pinimg.com/1200x/77/8a/c4/778ac42d0df207228369c1f6ad24f3d7.jpg" alt="tgs1">
+      <img src= "https://i.pinimg.com/1200x/8d/30/ef/8d30ef96e6d8efe6e265f3bc26e24c41.jpg" alt="tgs2">
+      <img src= "https://i.pinimg.com/1200x/cf/f6/6f/cff66f99f25e56ede5f956d4f9716815.jpg" alt="tgs3">
+      <img src= "https://i.pinimg.com/736x/1a/46/7c/1a467c747477fa0c6459d163b4dcbafd.jpg" alt="tgs4">
+      <img src= "https://i.pinimg.com/1200x/4e/99/98/4e9998697020d9b6bb9a0f6b13bb949c.jpg" alt="tgs5">
+      <img src= "https://i.pinimg.com/1200x/0c/42/08/0c42088ee3abd2d97c19b221a12f8f11.jpg" alt="tgs6">
+    </div>
+    <a href="#" class="back" onclick="showPage('movies')">← Back to Movies</a>
+  </div>
+
+  <!-- Barbie Fairy Secret -->
+  <div id="bfs" class="page">
+    <h1>Barbie: A Fairy Secret</h1>
+    <p>My and my sisters used to watch this movie weekly in our tiny TV with DVD. It truly gives 
+    us the fairytale childhood nostalgia that has a magical feeling. We still watch it together until now and we 
+    can't imagine our childhood without this incredible movie. It got popular when it was on Netflix, but we
+    have a worn out CD as proof we are og.</p>
+    <div class="gallery">
+      <img src= "https://i.pinimg.com/1200x/fb/f4/76/fbf476c0d379558224a74cc3311b6cc8.jpg" alt="bfs1">
+      <img src= "https://i.pinimg.com/1200x/f9/5d/bd/f95dbd45a0706a2d627a0f10513558fb.jpg" alt="bfs2">
+      <img src= "https://i.pinimg.com/1200x/f8/13/4b/f8134b1f263e15eb6b40fe048c7a0d29.jpg" alt="bfs3">
+      <img src= "https://i.pinimg.com/1200x/90/77/94/907794daab2f58aa3a3e059283bb6fa4.jpg" alt="bfs4">
+      <img src= "https://i.pinimg.com/1200x/6a/6b/e6/6a6be6e029ab5a2384fb28539988d908.jpg" alt="bfs5">
+      <img src= "https://i.pinimg.com/1200x/e0/20/84/e020847cf88a66a3a6a1df568604a8ab.jpg" alt="bfs6">
+    </div>
+    <a href="#" class="back" onclick="showPage('movies')">← Back to Movies</a>
+  </div>
+
+
+
+<!-- Music Page -->
+  <div id="music" class="page">
+    <h1>MUSIC</h1>
+    <p>Everybody loves music. So here are a few of my current favorite albums.</p>
+    <div class="gallery">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5b/Hamilton_cast_recording_cover.jpeg/250px-Hamilton_cast_recording_cover.jpeg" alt="music1">
+      <img src="https://upload.wikimedia.org/wikipedia/en/4/42/Beatles_-_Abbey_Road.jpg" alt="music2">
+      <img src="https://i.pinimg.com/736x/23/34/28/233428dd8bbc421beb1f9a6c7df1a891.jpg" alt="music3">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/Beabadoobee_-_This_Is_How_Tomorrow_Moves.png/250px-Beabadoobee_-_This_Is_How_Tomorrow_Moves.png" alt="music4">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f8/Taylor_Swift_-_Folklore.png/250px-Taylor_Swift_-_Folklore.png" alt="music5">
+      <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Taylor_Swift_-_Reputation.png" alt="music6">
+    </div>
+    <a href="#" class="back" onclick="showPage('home')">← Back to Home</a>
+  </div>
+
+  <!-- About Page -->
+ <div id="about" class="page">
+    <img src="https://i.ibb.co/kVsDGcPS/cs-s-1.png" 
+         alt="About Autumn" 
+         style="max-width: 1070px; width: 75%; height: auto; display: block; margin: 20px auto; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+    <a href="#" class="back" onclick="showPage('home')">← Back to Home</a>
+  </div>
+
+     <!-- Driver Page -->
+  <div id="driver" class="page">
+    <img src="https://i.ibb.co/WWRhMXdN/cs-s.jpg"
+    alt="Driver Page"
+    style="max-width: 1070px; width: 70%; height: auto; display: block; margin: 20px auto; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+    <a href="#" class="back" onclick="showPage('home')">← Back to Home</a>
+  </div>
+
+
+  <footer>
+    <p>© 2025 My Interests Magazine | Made by Autumn Tan</p>
+  </footer>
+
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+      if (pageId === 'home') {
+        document.getElementById('home').style.display = 'grid';
+      } else {
+        document.getElementById(pageId).style.display = 'block';
+      }
+    }
+    function openMenu() {
+      document.getElementById("menu").style.width = "250px";
+    }
+    function closeMenu() {
+      document.getElementById("menu").style.width = "0";
+    }
+  </script>
+
+</body>
+
+</html>
